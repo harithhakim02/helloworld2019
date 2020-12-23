@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main()
+{
+    unsigned long long int isbn, isbn2;
+    int a =1, b =0, remainder, dg, cdg;
+
+    printf("Masukkan 12 digit ISBN-13 terlebih dahulu: ");
+    scanf_s("%llu",&isbn);
+
+
+    isbn2 = isbn;
+    while (isbn2 > 0)
+    {
+        dg = isbn2 % 10;
+        if (a % 2 == 0)
+        {
+            b = b + (dg * 1);
+            a = 1;
+        }
+        else
+        {
+            b = b + (dg * 3);
+            a = 2;
+        }
+        isbn2 = isbn2/10;
+    }
+    remainder = b % 10;
+    cdg = 10-remainder;
+    printf("cek digit terakhir: %d", cdg);
+    return 0;
+}
